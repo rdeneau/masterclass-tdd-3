@@ -35,9 +35,7 @@ namespace MarsRoverKata.Source
         }
 
         public Position Forward(Position position) =>
-            Position.Create(
-                position.X + Delta.X,
-                position.Y + Delta.Y);
+            position.Add(Delta);
 
         public bool Equals(Direction other)
         {

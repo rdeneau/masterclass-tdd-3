@@ -13,5 +13,10 @@ namespace MarsRoverKata.Source
             X = x;
             Y = y;
         }
+
+        public Position Add(Position delta) =>
+            Create(
+                X + delta.X,
+                Y + delta.Y);
     }
 }
