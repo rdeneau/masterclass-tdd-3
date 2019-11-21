@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Angle.cs" />
     <Compile Include="Source\Direction.cs" />
     <Compile Include="Source\MarsRover.cs" />
     <Compile Include="Tests\MarsRoverShould.cs" />

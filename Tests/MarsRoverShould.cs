@@ -20,5 +20,20 @@ namespace MarsRoverKata.Tests
             var expected = Direction.FromCode(expectedDirection);
             sut.Direction.Should().Be(expected);
         }
+
+        [Theory]
+        [InlineData("W", "N")]
+        [InlineData("S", "W")]
+        [InlineData("E", "S")]
+        [InlineData("N", "E")]
+        public void Rotate_Right(string initialDirection, string expectedDirection)
+        {
+            var direction = Direction.FromCode(initialDirection);
+            var sut = new MarsRover(direction);
+            sut.RotateRight();
+
+            var expected = Direction.FromCode(expectedDirection);
+            sut.Direction.Should().Be(expected);
+        }
     }
 }

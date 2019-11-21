@@ -18,5 +18,10 @@ namespace MarsRoverKata.Source
         {
             Direction = Direction.Left;
         }
+
+        public void RotateRight()
+        {
+            Direction = Direction.Right;
+        }
     }
 }
