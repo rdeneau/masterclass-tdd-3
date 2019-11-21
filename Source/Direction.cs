@@ -11,10 +11,10 @@ namespace MarsRoverKata.Source
         public static Direction FromCode(string code) =>
             All.Single(x => x.Code == code);
 
-        private static readonly Direction East  = new Direction("E", 0 * Angle.Quarter);
-        private static readonly Direction North = new Direction("N", 1 * Angle.Quarter);
-        private static readonly Direction West  = new Direction("W", 2 * Angle.Quarter);
-        private static readonly Direction South = new Direction("S", 3 * Angle.Quarter);
+        private static readonly Direction East  = new Direction("E", 0 * Angle.Quarter, 1,  0);
+        private static readonly Direction North = new Direction("N", 1 * Angle.Quarter, 0,  -1);
+        private static readonly Direction West  = new Direction("W", 2 * Angle.Quarter, -1, 0);
+        private static readonly Direction South = new Direction("S", 3 * Angle.Quarter, 0,  1);
 
         private static readonly Direction[] All = { East,North,West,South };
 
@@ -22,14 +22,22 @@ namespace MarsRoverKata.Source
 
         private string Code { get; }
 
+        private Position Delta { get; }
+
         public Direction Left  => FromAngle(Angle.Add(Angle.Quarter));
         public Direction Right => FromAngle(Angle.Add(-Angle.Quarter));
 
-        private Direction(string code, int angle)
+        private Direction(string code, int angle, int deltaX, int deltaY)
         {
             Angle = new Angle(angle);
             Code  = code;
+            Delta = Position.Create(deltaX, deltaY);
         }
+
+        public Position Forward(Position position) =>
+            Position.Create(
+                position.X + Delta.X,
+                position.Y + Delta.Y);
 
         public bool Equals(Direction other)
         {

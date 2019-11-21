@@ -9,9 +9,12 @@ namespace MarsRoverKata.Source
     {
         public Direction Direction { get; private set; }
 
-        public MarsRover(Direction direction)
+        public Position Position { get; private set; }
+
+        public MarsRover(Direction direction, Position position)
         {
             Direction = direction;
+            Position  = position;
         }
 
         public void RotateLeft()
@@ -22,6 +25,11 @@ namespace MarsRoverKata.Source
         public void RotateRight()
         {
             Direction = Direction.Right;
+        }
+
+        public void MoveForward()
+        {
+            Position = Direction.Forward(Position);
         }
     }
 }
